@@ -1,0 +1,24 @@
+# --- DASHBOARD & UI ---
+# Why: Creates the interactive web interface (sliders, buttons, graphs).
+# How: Runs a local web server to render Python scripts as HTML.
+streamlit
+
+# --- MATH & LOGIC ---
+# Why: The 'Stochastic Engine'. Used for generating random numbers (Monte Carlo) and vector math.
+# How: Generates 5,000 price paths in milliseconds using C-optimized arrays.
+numpy
+
+# --- DATA MANAGEMENT ---
+# Why: Manages the Geology Schedules (Grade/Strip Ratio) as structured tables.
+# How: Aligns the 'Mine Plan' (Excel-like data) with the 'Simulation Time'.
+pandas
+
+# --- VISUALIZATION ---
+# Why: Renders the professional interactive charts (Market Volatility, Risk Distribution).
+# How: Creates vector graphics (SVG/JS) that allow zooming and hovering during the demo.
+plotly
+
+# --- FINANCE ---
+# Why: Calculates Net Present Value (NPV) and Internal Rate of Return (IRR).
+# How: Provides the 'npf.npv(rate, cash_flows)' function standard in finance.
+numpy-financial

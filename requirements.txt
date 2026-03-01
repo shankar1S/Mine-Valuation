@@ -22,3 +22,4 @@ plotly
 # Why: Calculates Net Present Value (NPV) and Internal Rate of Return (IRR).
 # How: Provides the 'npf.npv(rate, cash_flows)' function standard in finance.
 numpy-financial
+scipy

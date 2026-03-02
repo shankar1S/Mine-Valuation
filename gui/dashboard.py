@@ -15,17 +15,24 @@ st.set_page_config(
     page_title="Strategic Mine Valuation Engine", 
     layout="wide", 
     page_icon="⚒️",
-    initial_sidebar_state="expanded"
+    initial_sidebar_state="collapsed"
+)
+
+st.markdown(
+    "<style>.block-container{max-width:100%;padding-left:1rem;padding-right:1rem;}</style>",
+    unsafe_allow_html=True,
 )
 
 # --- SESSION STATE MANAGEMENT ---
-if 'baseline_run' not in st.session_state:
-    st.session_state.baseline_run = False
+def init_session_state():
+    st.session_state.setdefault("baseline_run", True)
 
 def reset_simulation():
-    st.session_state.baseline_run = False
+    init_session_state()
+    st.session_state.baseline_run = True
 
 def run_app():
+    init_session_state()
     # --- HEADER ---
     c_head1, c_head2 = st.columns([3, 1])
     with c_head1:
@@ -95,11 +102,11 @@ def run_app():
 
     # --- MAIN ACTION BUTTON ---
     st.markdown("---")
-    if st.button("🚀 RUN BASELINE ASSESSMENT (Static DCF)", type="primary"):
+    if st.button("🚀 RECALCULATE BASELINE ASSESSMENT (Static DCF)", type="primary"):
         st.session_state.baseline_run = True
 
     # --- PHASE 2: EXECUTION ---
-    if st.session_state.baseline_run:
+    if st.session_state.get("baseline_run", True):
         # A. BUILD CONFIG
         config = FeasibilityConfig()
         config.TOTAL_RESERVE_TONNES = reserves
@@ -165,7 +172,7 @@ def run_app():
             fig_price.add_trace(go.Scatter(y=test_prices, mode='lines', name='Sample Price Path', line=dict(color='gold', width=1)))
             fig_price.add_hline(y=breakeven_price, line_dash="dash", line_color="red", annotation_text=f"Est. LOM Avg Breakeven: ${breakeven_price:.0f}/oz")
             fig_price.update_layout(title="📉 Market Volatility (External Risk)", xaxis_title="Year", yaxis_title="Price ($/oz)", template="plotly_white", height=350)
-            st.plotly_chart(fig_price, use_container_width=True)
+            st.plotly_chart(fig_price, width="stretch")
 
         with col_geo:
             min_len = min(len(scaled_grade_sched), len(scaled_strip_sched))
@@ -178,7 +185,7 @@ def run_app():
             fig_geo.add_trace(go.Scatter(x=sched_df["Year"], y=sched_df["Grade (g/t)"], name="Grade (g/t)", line=dict(color="#FFA15A", width=3)))
             fig_geo.add_trace(go.Scatter(x=sched_df["Year"], y=sched_df["Strip Ratio"], name="Strip Ratio", yaxis="y2", line=dict(dash="dot", color="grey")))
             fig_geo.update_layout(yaxis2=dict(overlaying="y", side="right"), title="📉 Underlying Geology (Scaled to Input)", template="plotly_white", height=350, margin=dict(l=20, r=20, t=40, b=20))
-            st.plotly_chart(fig_geo, use_container_width=True)
+            st.plotly_chart(fig_geo, width="stretch")
 
         # C. STRATEGIC REAL OPTIONS (CLEAN VERSION)
         st.markdown("---")
@@ -315,7 +322,12 @@ def run_app():
             fig = ff.create_distplot(hist_data, group_labels, show_hist=False, colors=colors)
             fig.add_vline(x=0, line_dash="dash", line_color="black")
             fig.update_layout(title_text="NPV Probability Distribution (Risk Profile Shift)", template="plotly_white")
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig, width="stretch")
+
+def main():
+    st.title("Mine Valuation Engine")
+    # rest of your app code
+    run_app()
 
 if __name__ == "__main__":
-    run_app()
+    main()

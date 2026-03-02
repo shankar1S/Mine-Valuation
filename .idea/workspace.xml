@@ -4,14 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e07dca08-1c12-4949-a506-71b3e7fe5e83" name="Changes" comment="" />
+    <list default="true" id="e07dca08-1c12-4949-a506-71b3e7fe5e83" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gui/dashboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/gui/dashboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/launch.py" beforeDir="false" afterPath="$PROJECT_DIR$/launch.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="15" />
+    <option name="cachedIndexableFilesCount" value="17" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -21,7 +25,7 @@
     <urls />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 1
@@ -69,7 +73,8 @@
       <updated>1772190470937</updated>
       <workItem from="1772190473141" duration="2769000" />
       <workItem from="1772356480201" duration="3667000" />
-      <workItem from="1772381014835" duration="7928000" />
+      <workItem from="1772381014835" duration="9841000" />
+      <workItem from="1772421800865" duration="1779000" />
     </task>
     <servers />
   </component>
